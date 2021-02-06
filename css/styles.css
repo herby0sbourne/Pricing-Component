@@ -1,0 +1,256 @@
+:root {
+  /*//////////////////////////////////////////////////////////////////
+      [ PRIMARY COLOR ]*/
+  --Linear-Gradient: hsl(236, 72%, 79%) to hsl(237, 63%, 64%);
+  /*//////////////////////////////////////////////////////////////////
+      [ Neutral COLOR ]*/
+  --Very-Light-Grayish-Blue: hsl(240, 78%, 98%);
+  --Light-Grayish-Blue: hsl(234, 14%, 74%);
+  --Grayish-Blue: hsl(233, 13%, 49%);
+  --Dark-Grayish-Blue: hsl(232, 13%, 33%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  background: url("../images/bg-top.svg") no-repeat top right / 84%;
+  background-position: 374% top;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+.toggle {
+  display: none;
+}
+
+.label {
+  display: inline-block;
+  background-image: linear-gradient(
+    to right,
+    hsl(236, 72%, 79%),
+    hsl(237, 63%, 64%)
+  );
+  width: 3.75rem;
+  height: 2rem;
+  border-radius: 3.125rem;
+  margin: 0 0.9375rem 0;
+  cursor: pointer;
+  position: relative;
+  transition: opacity 100ms ease-in-out;
+}
+
+.slider-toggle {
+  position: absolute;
+  background-color: #fff;
+  width: 1.5625rem;
+  height: 1.5625rem;
+  border-radius: 50%;
+  top: 0.1875rem;
+  left: 0.1875rem;
+  animation: toggleOff 0.3s linear forwards;
+}
+
+.price-switch .label:hover {
+  opacity: 0.7;
+}
+
+.toggle:checked ~ .price-switch .label .slider-toggle {
+  animation: toggleOn 0.3s linear forwards;
+}
+
+@keyframes toggleOn {
+  0% {
+    transform: translateX(0) scale(1);
+  }
+  100% {
+    transform: translateX(29px) scale(1);
+  }
+}
+
+@keyframes toggleOff {
+  0% {
+    transform: translateX(29px) scale(1);
+  }
+  100% {
+    transform: translateX(0) scale(1);
+  }
+}
+
+.container {
+  padding: 4.375rem 1.5625rem;
+}
+
+.container h2 {
+  color: var(--Grayish-Blue);
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.price-switch {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3.125rem;
+}
+
+.price-switch span {
+  color: var(--Light-Grayish-Blue);
+}
+
+.card-container {
+  background-color: #fff;
+  width: 20.625rem;
+  padding: 1.875rem 1.5625rem;
+  text-align: center;
+  border-radius: 0.625rem;
+  color: var(--Dark-Grayish-Blue);
+  box-shadow: 0px 3px 20px -5px rgb(0, 0, 0, 0.4);
+}
+
+.card-container:not(:first-child) {
+  margin-top: 2rem;
+}
+
+.card-container:nth-child(2) {
+  background-image: linear-gradient(
+    to right bottom,
+    hsl(236, 72%, 79%),
+    hsl(237, 63%, 64%)
+  );
+  color: #fff;
+}
+
+.plan-cost {
+  padding: 1.25rem 0;
+  font-size: 3.125rem;
+}
+
+.plan-cost span {
+  font-size: 1.875rem;
+  vertical-align: middle;
+  margin-right: 0.3125rem;
+  color: var(--Dark-Grayish-Blue);
+}
+
+.card-container:nth-child(2) .plan-cost span {
+  color: #fff;
+}
+
+.card-body {
+  font-size: 0.875rem;
+}
+
+.card-body div {
+  border-top: 1px solid var(--Light-Grayish-Blue);
+  padding: 0.9375rem;
+}
+
+.card-body div:last-child {
+  border-bottom: 1px solid var(--Light-Grayish-Blue);
+}
+
+.card-footer {
+  padding-top: 1.75rem;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+  border: none;
+  font: inherit;
+
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  width: 100%;
+  padding: 15px 0;
+  border-radius: 10px;
+  letter-spacing: 1.5px;
+}
+
+button:focus {
+  outline: none;
+}
+
+.cta {
+  color: #fff;
+  background: linear-gradient(to right, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+  border: 1px solid hsl(236, 72%, 79%);
+  transition: 300ms ease-in-out;
+}
+
+.cta:hover {
+  background: transparent;
+  color: hsl(237, 63%, 64%);
+}
+
+.cta.btn {
+  background: #fff;
+  color: hsl(237, 63%, 64%);
+  border: 1px solid #fff;
+}
+
+.cta.btn:hover {
+  background: transparent;
+  color: #fff;
+}
+
+.annually {
+  display: block;
+}
+.monthly {
+  display: none;
+}
+
+.toggle:checked
+  ~ .flex-content
+  .card-container
+  .card-head
+  .plan-cost
+  .annually {
+  display: none;
+}
+
+.toggle:checked ~ .flex-content .card-container .card-head .plan-cost .monthly {
+  display: block;
+}
+
+@media (min-width: 700px) {
+  body {
+    background: url("../images/bg-top.svg") no-repeat top right,
+      url("../images/bg-bottom.svg") no-repeat bottom left;
+  }
+}
+
+@media (min-width: 1280px) {
+  body {
+    min-height: 100vh;
+  }
+
+  .container h2 {
+    font-size: 1.8rem;
+  }
+
+  .flex-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-container:not(:first-child) {
+    margin-top: 0;
+  }
+  .card-container:nth-child(2) {
+    padding-top: 3.75rem;
+    padding-bottom: 3.75rem;
+  }
+}
